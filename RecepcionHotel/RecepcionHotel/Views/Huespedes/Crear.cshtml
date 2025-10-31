@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Registrar Huésped";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-4">🧍‍♂️ Registro de Nuevo Huésped</h2>
+    <hr>
+
+    <form asp-action="Crear" method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="Nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Ingrese el nombre" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="Apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Ingrese el apellido" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="Documento" class="form-label">Documento de Identidad</label>
+                <input type="text" class="form-control" id="Documento" name="Documento" placeholder="Ej: DNI, Pasaporte" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="Telefono" class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="Telefono" name="Telefono" placeholder="Ej: +56 9 1234 5678">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="Email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="Email" name="Email" placeholder="correo@ejemplo.com">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="Nacionalidad" class="form-label">Nacionalidad</label>
+                <input type="text" class="form-control" id="Nacionalidad" name="Nacionalidad" placeholder="Ej: Chilena, Argentina, etc.">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="FechaIngreso" class="form-label">Fecha de Ingreso</label>
+                <input type="date" class="form-control" id="FechaIngreso" name="FechaIngreso" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="FechaSalida" class="form-label">Fecha de Salida</label>
+                <input type="date" class="form-control" id="FechaSalida" name="FechaSalida" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="Observaciones" class="form-label">Observaciones</label>
+            <textarea class="form-control" id="Observaciones" name="Observaciones" rows="3" placeholder="Notas adicionales (opcional)"></textarea>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success px-4">💾 Guardar Huésped</button>
+            <a href="~/Home/Index" class="btn btn-secondary px-4 ms-2">⬅ Volver al Inicio</a>
+        </div>
+    </form>
+</div>

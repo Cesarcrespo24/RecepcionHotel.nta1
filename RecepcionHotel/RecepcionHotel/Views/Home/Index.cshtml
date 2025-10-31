@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Sistema de Recepción Hotelera";
+}
+
+<div class="text-center">
+    <h1 class="display-4 text-primary">🏨 @ViewBag.NombreHotel</h1>
+    <p class="lead">Sistema Integral de Gestión de Recepción</p>
+    <hr class="my-4">
+</div>
+
+<!-- Estadísticas principales -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body text-center">
+                <h4 class="card-title">@ViewBag.TotalHuespedes</h4>
+                <p class="card-text">Huéspedes Registrados</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body text-center">
+                <h4 class="card-title">@ViewBag.HabitacionesDisponibles</h4>
+                <p class="card-text">Habitaciones Disponibles</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body text-center">
+                <h4 class="card-title">@ViewBag.ReservasHoy</h4>
+                <p class="card-text">Reservas para Hoy</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body text-center">
+                <h4 class="card-title">@ViewBag.EmpleadosTurno</h4>
+                <p class="card-text">Empleados en Turno</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Módulos principales -->
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">🧍‍♂️ Huéspedes</h5>
+                <p class="card-text">Registro y gestión de huéspedes alojados en el hotel</p>
+                <a href="#" class="btn btn-primary">Gestionar Huéspedes</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">🛏️ Habitaciones</h5>
+                <p class="card-text">Consulta y asignación de habitaciones</p>
+                <a href="#" class="btn btn-success">Ver Habitaciones</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">📅 Reservas</h5>
+                <p class="card-text">Programación y control de reservas</p>
+                <a href="#" class="btn btn-info">Gestionar Reservas</a>
+            </div>
+        </div>
+    </div>
+</div>
+

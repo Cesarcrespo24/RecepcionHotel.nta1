@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Panel de Control - Recepción Hotelera";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-4">📊 Panel de Control</h2>
+    <hr>
+
+    <!-- Resumen general -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body text-center">
+                    <h4 class="card-title">@ViewBag.HabitacionesOcupadas</h4>
+                    <p class="card-text">Habitaciones Ocupadas</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-body text-center">
+                    <h4 class="card-title">@ViewBag.HabitacionesDisponibles</h4>
+                    <p class="card-text">Habitaciones Disponibles</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-body text-center">
+                    <h4 class="card-title">@ViewBag.ReservasPendientes</h4>
+                    <p class="card-text">Reservas Pendientes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Indicadores de ocupación -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title text-center">📈 Nivel de Ocupación Actual</h5>
+            <div class="progress" style="height: 30px;">
+                <div class="progress-bar bg-success" role="progressbar"
+                     style="width: @ViewBag.PorcentajeOcupacion%"
+                     aria-valuenow="@ViewBag.PorcentajeOcupacion"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                    @ViewBag.PorcentajeOcupacion%
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Últimos huéspedes -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title text-center">🧍‍♂️ Últimos Huéspedes Registrados</h5>
+            <table class="table table-striped table-hover mt-3">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Documento</th>
+                        <th>Ingreso</th>
+                        <th>Salida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.UltimosHuespedes != null)
+                    {
+                        foreach (var h in ViewBag.UltimosHuespedes)
+                        {
+                            <tr>
+                                <td>@h.Nombre @h.Apellido</td>
+                                <td>@h.Documento</td>
+                                <td>@h.FechaIngreso.ToShortDateString()</td>
+                                <td>@h.FechaSalida.ToShortDateString()</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">No hay huéspedes registrados aún.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Últimas reservas -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title text-center">📅 Últimas Reservas</h5>
+            <table class="table table-striped table-hover mt-3">
+                <thead class="table-success">
+                    <tr>
+                        <th>Huésped</th>
+                        <th>Habitación</th>
+                        <th>Fecha de Reserva</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.UltimasReservas != null)
+                    {
+                        foreach (var r in ViewBag.UltimasReservas)
+                        {
+                            <tr>
+                                <td>@r.NombreHuesped</td>
+                                <td>@r.NumeroHabitacion</td>
+                                <td>@r.FechaReserva.ToShortDateString()</td>
+                                <td>@r.Estado</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">No hay reservas recientes.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="~/Home/Index" class="btn btn-secondary px-4">⬅ Volver al Inicio</a>
+    </div>
+</div>
