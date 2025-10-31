@@ -1,0 +1,68 @@
+CREATE DATABASE RecepcionHotelDB;
+GO
+
+USE RecepcionHotelDB;
+GO
+
+-- ========================================
+--  TABLA: Huespedes
+-- ========================================
+CREATE TABLE Huespedes (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre NVARCHAR(50) NOT NULL,
+    Apellido NVARCHAR(50) NOT NULL,
+    Documento NVARCHAR(30) NOT NULL,
+    Telefono NVARCHAR(20),
+    Email NVARCHAR(80),
+    Nacionalidad NVARCHAR(50),
+    FechaIngreso DATE NOT NULL,
+    FechaSalida DATE NOT NULL,
+    Observaciones NVARCHAR(200) NULL
+);
+GO
+
+-- ========================================
+--  TABLA: Habitaciones
+-- ========================================
+CREATE TABLE Habitaciones (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Numero NVARCHAR(10) NOT NULL,
+    Tipo NVARCHAR(30) NOT NULL,
+    Disponible BIT NOT NULL,
+    PrecioPorNoche DECIMAL(10,2) NOT NULL
+);
+GO
+
+-- ========================================
+--  TABLA: Reservas
+-- ========================================
+CREATE TABLE Reservas (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    NombreHuesped NVARCHAR(100) NOT NULL,
+    NumeroHabitacion NVARCHAR(10) NOT NULL,
+    FechaReserva DATE NOT NULL,
+    Estado NVARCHAR(30) NOT NULL
+);
+GO
+
+-- ========================================
+--  REGISTROS INICIALES
+-- ========================================
+INSERT INTO Habitaciones (Numero, Tipo, Disponible, PrecioPorNoche) VALUES
+('101', 'Simple', 1, 35000),
+('102', 'Doble', 1, 42000),
+('103', 'Suite', 0, 60000),
+('201', 'Doble', 1, 42000),
+('202', 'Suite', 0, 65000);
+
+INSERT INTO Huespedes (Nombre, Apellido, Documento, Telefono, Email, Nacionalidad, FechaIngreso, FechaSalida, Observaciones) VALUES
+('Laura', 'Gómez', 'DNI 12345678', '+56 9 1234 5678', 'laura@gmail.com', 'Chilena', '2025-10-25', '2025-10-28', 'Prefiere vista al mar.'),
+('Andrés', 'Pérez', 'Pasaporte XZ12345', '+56 9 8765 4321', 'andresp@hotmail.com', 'Argentina', '2025-10-27', '2025-11-01', 'Solicitó desayuno temprano.'),
+('María', 'Rojas', 'DNI 98765432', NULL, 'maria.rojas@mail.com', 'Peruana', '2025-10-26', '2025-10-30', NULL);
+
+INSERT INTO Reservas (NombreHuesped, NumeroHabitacion, FechaReserva, Estado) VALUES
+('Laura Gómez', '103', '2025-10-24', 'Check-in realizado'),
+('Andrés Pérez', '202', '2025-10-25', 'Confirmada'),
+('María Rojas', '101', '2025-10-26', 'Pendiente');
+GO
+
